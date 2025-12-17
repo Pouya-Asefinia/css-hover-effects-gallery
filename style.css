@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #19133a;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.list {
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+}
+
+.item img {
+    object-fit: cover;
+    padding: 4px;
+}
+
+/* Hover effects */
+
+.list {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.list .item {
+    transition: .5s;
+    filter: brightness(0);
+}
+
+.list .item:hover {
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+
+.list .item:hover + * {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+}
+
+.list .item:hover + * + * {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+}
+
+.list .item:hover + * + * + * {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(10deg);
+}
+
+.list .item:has(+ *:hover) {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+
+.list .item:has(+ * + *:hover) {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+
+.list .item:has(+ * + * + *:hover) {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(-10deg);
+}
